@@ -17,18 +17,11 @@ function App() {
     likes(like + 1);
   };
 
-  const handleTitleClick = () => {
-    let copyTitle = [...title];
-    copyTitle[0] = "여자 코트 추천";
-    titles(copyTitle);
-  };
-
   return (
     <div className="App">
       <div className="black-nav">
         <h4>MARSHOT PROJECT</h4>
       </div>
-      <button onClick={handleTitleClick}>Edit Title</button>
       <div className="content">
         <h4>{title[0]}</h4>
         <p>Published on Feb. 17th</p>
@@ -38,13 +31,28 @@ function App() {
       <div className="content">
         <h4>{title[1]}</h4>
         <p>Published on Feb. 17th</p>
+        <span onClick={handleLikeClick}>❤</span>
+        <span>{like}</span>
       </div>
       <div className="content">
         <h4>{title[2]}</h4>
         <p>Published on Feb. 17th</p>
+        <span onClick={handleLikeClick}>❤</span>
+        <span>{like}</span>
       </div>
+      <ContentDetail></ContentDetail>
     </div>
   );
 }
+
+const ContentDetail = () => {
+  return (
+    <div className="content-detail">
+      <h4>Title</h4>
+      <p>Date</p>
+      <p>Detail Content</p>
+    </div>
+  );
+};
 
 export default App;
