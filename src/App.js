@@ -17,11 +17,18 @@ function App() {
     likes(like + 1);
   };
 
+  const handleTitleClick = () => {
+    let copyTitle = [...title];
+    copyTitle[0] = "여자 코트 추천";
+    titles(copyTitle);
+  };
+
   return (
     <div className="App">
       <div className="black-nav">
         <h4>MARSHOT PROJECT</h4>
       </div>
+      <button onClick={handleTitleClick}>Edit Title</button>
       <div className="content">
         <h4>{title[0]}</h4>
         <p>Published on Feb. 17th</p>
