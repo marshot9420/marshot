@@ -9,7 +9,10 @@ function App() {
       <div className="black-nav">
         <h4>MARSHOT PROJECT</h4>
       </div>
-      <h4 style={{ color: "red" }}>{post}</h4>
+      <div className="content">
+        <h4>Title</h4>
+        <p>Published on Feb. 17th</p>
+      </div>
     </div>
   );
 }
