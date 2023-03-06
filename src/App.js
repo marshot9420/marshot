@@ -11,7 +11,10 @@ function App() {
     "파이썬 독학",
     "MARSHOT",
   ]);
+
   let [detail, setDetail] = useState(false);
+
+  let [detailTitle, setDetailTitle] = useState(0);
 
   let [today, setToday] = useState(
     new Date().toLocaleDateString("ko-kr", {
@@ -47,11 +50,7 @@ function App() {
 
       {title.map(postMap)}
       {detail == true ? (
-        <ModalDetail
-          title={title}
-          today={today}
-          handleTitleClick={handleTitleClick}
-        />
+        <ModalDetail title={title} today={today} detailTitle={detailTitle} />
       ) : null}
     </div>
   );
@@ -60,10 +59,9 @@ function App() {
 const ModalDetail = (props) => {
   return (
     <div className="content-detail">
-      <h4>{props.title[0]}</h4>
+      <h4>{props.title[props.detailTitle]}</h4>
       <p>{props.today}</p>
       <p>Detail Content</p>
-      <button>Edit</button>
     </div>
   );
 };
