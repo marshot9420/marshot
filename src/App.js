@@ -13,6 +13,15 @@ function App() {
   ]);
   let [detail, setDetail] = useState(false);
 
+  let [today, setToday] = useState(
+    new Date().toLocaleDateString("ko-kr", {
+      weekday: "long",
+      year: "numeric",
+      month: "long",
+      day: "numeric",
+    })
+  );
+
   const handleDetailClick = () => {
     if (detail === false) {
       setDetail(true);
@@ -25,7 +34,7 @@ function App() {
     return (
       <div className="content" key={i}>
         <h4 onClick={handleDetailClick}>{p}</h4>
-        <p>Published on Feb. 17th</p>
+        <p>{today}</p>
       </div>
     );
   };
@@ -37,17 +46,24 @@ function App() {
       </div>
 
       {title.map(postMap)}
-      {detail == true ? <ContentDetail /> : null}
+      {detail == true ? (
+        <ModalDetail
+          title={title}
+          today={today}
+          handleTitleClick={handleTitleClick}
+        />
+      ) : null}
     </div>
   );
 }
 
-const ContentDetail = () => {
+const ModalDetail = (props) => {
   return (
     <div className="content-detail">
-      <h4>Title</h4>
-      <p>Date</p>
+      <h4>{props.title[0]}</h4>
+      <p>{props.today}</p>
       <p>Detail Content</p>
+      <button>Edit</button>
     </div>
   );
 };
